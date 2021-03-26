@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 /*
 Build all of your functions for displaying and gathering information below (GUI).
 */
@@ -33,28 +33,29 @@ function mainMenu(person, people){
     alert("Could not find that individual.");
     return app(people); // restart
   }
-
-  let displayOption = prompt("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'");
-
-  switch(displayOption){
-    case "info":
-    // TODO: get person's info
-    break;
-    case "family":
-    // TODO: get person's family
-    break;
-    case "descendants":
-    // TODO: get person's descendants
-    break;
-    case "restart":
-    app(people); // restart
-    break;
-    case "quit":
-    return; // stop execution
-    default:
-    return mainMenu(person, people); // ask again
-  }
 }
+
+//   let displayOption = prompt("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'");
+
+//   switch(displayOption){
+//     case "info":
+//     // TODO: get person's info
+//     break;
+//     case "family":
+//     // TODO: get person's family
+//     break;
+//     case "descendants":
+//     // TODO: get person's descendants
+//     break;
+//     case "restart":
+//     app(people); // restart
+//     break;
+//     case "quit":
+//     return; // stop execution
+//     default:
+//     return mainMenu(person, people); // ask again
+//   }
+// }
 
 function searchByName(people){
   let firstName = promptFor("What is the person's first name?", chars);
@@ -67,14 +68,36 @@ function searchByName(people){
     else{
       return false;
     }
-  })
+  }) 
   // TODO: find the person using the name they entered
-  firstName
-  lastName
+    displayPerson(foundPerson.map(function(person){
+      person.firstName === firstName && person.lastName === lastName;
+    }));
+  
+  // document.getElementById("data").innerHTML = firstName.find(people);
+  
   return foundPerson;
 }
 
-// alerts a list of people
+function searchByTraits(people){
+  let eyeColor = promptFor("What is the person's eye color?", chars);
+  let height = promptFor("what is the person's height?", chars);
+  let age = promptFor("what is the person's age?", chars);
+  let weight = promptFor("what is the person's eye weight?", chars);
+  let occupation = promptFor("what is the person's occupation?", chars);
+
+  let foundPerson = people.filter(function(person){
+    if(person.eyeColor === eyeColor && person.height === height && person.age == age && person.occupation == occupation && person.weight == weight){
+    return true;
+    }
+    else{
+      return false;
+    }
+});
+}
+
+
+//alerts a list of people
 function displayPeople(people){
   alert(people.map(function(person){
     return person.firstName + " " + person.lastName;
@@ -91,6 +114,7 @@ function displayPerson(person){
   personInfo+="age:" + person.height + "\n";
   personInfo+="eyeColor:" + person.eyecolor + "\n";
   personInfo+="occupation:" + person.occupation + "\n";
+  personInfo+="date of birth:" + person.dob + "\n";
   // TODO: finish getting the rest of the information to display
   alert(personInfo);
 }
@@ -112,3 +136,4 @@ function yesNo(input){
 function chars(input){
   return true; // default validation only
 }
+
