@@ -5,12 +5,13 @@ const data = [
 		"firstName": "Billy",
 		"lastName": "Bob",
 		"gender": "male",
+		"age": 50,
 		"dob": "1/18/1949",
 		"height": 71,
 		"weight": 175,
 		"eyeColor": "brown",
 		"occupation": "programmer",
-		"parents": [],
+		"parents": ["Martha", "Michael"],
 		"currentSpouse": 401222887
 	},
 	{

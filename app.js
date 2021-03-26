@@ -33,29 +33,31 @@ function mainMenu(person, people){
     alert("Could not find that individual.");
     return app(people); // restart
   }
+
+
+ let displayOption = prompt("Found " + person.firstName + " " + person.lastName +" . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'");
+
+  switch(displayOption){
+    case "info":
+    // TODO: get person's info
+    displayPerson(person);
+    break;
+    case "family":
+    // TODO: get person's family
+    displayFamily(person);
+    break;
+    case "descendants":
+    // TODO: get person's descendants
+    break;
+    case "restart":
+    app(people); // restart
+    break;
+    case "quit":
+    return; // stop execution
+    default:
+    return mainMenu(person, people); // ask again
+  }
 }
-
-//   let displayOption = prompt("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'");
-
-//   switch(displayOption){
-//     case "info":
-//     // TODO: get person's info
-//     break;
-//     case "family":
-//     // TODO: get person's family
-//     break;
-//     case "descendants":
-//     // TODO: get person's descendants
-//     break;
-//     case "restart":
-//     app(people); // restart
-//     break;
-//     case "quit":
-//     return; // stop execution
-//     default:
-//     return mainMenu(person, people); // ask again
-//   }
-// }
 
 function searchByName(people){
   let firstName = promptFor("What is the person's first name?", chars);
@@ -69,14 +71,8 @@ function searchByName(people){
       return false;
     }
   }) 
-  // TODO: find the person using the name they entered
-    displayPerson(foundPerson.map(function(person){
-      person.firstName === firstName && person.lastName === lastName;
-    }));
-  
-  // document.getElementById("data").innerHTML = firstName.find(people);
-  
-  return foundPerson;
+  // TODO: find the person using the name they entered 
+  return foundPerson[0];
 }
 
 function searchByTraits(people){
@@ -93,7 +89,8 @@ function searchByTraits(people){
     else{
       return false;
     }
-});
+})
+return foundPerson[0];
 }
 
 
@@ -110,14 +107,23 @@ function displayPerson(person){
   let personInfo = "First Name: " + person.firstName + "\n";
   personInfo += "Last Name: " + person.lastName + "\n";
   personInfo+="height:" + person.height + "\n";
-  personInfo+="weight:" + person.height + "\n";
-  personInfo+="age:" + person.height + "\n";
-  personInfo+="eyeColor:" + person.eyecolor + "\n";
-  personInfo+="occupation:" + person.occupation + "\n";
-  personInfo+="date of birth:" + person.dob + "\n";
+  personInfo+="weight: " + person.weight + "\n";
+  personInfo+="age: " + person.age + "\n";
+  personInfo+="eyeColor: " + person.eyeColor + "\n";
+  personInfo+="occupation: " + person.occupation + "\n";
+  personInfo+="date of birth: " + person.dob + "\n";
+ 
   // TODO: finish getting the rest of the information to display
   alert(personInfo);
 }
+
+function displayFamily(person){
+
+  let personFamily = "Parents: " + person.parents + "\n";
+  alert(personFamily);
+}
+
+
 
 // function that prompts and validates user input
 function promptFor(question, valid){
