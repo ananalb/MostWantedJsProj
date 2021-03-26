@@ -12,7 +12,8 @@ const data = [
 		"eyeColor": "brown",
 		"occupation": "programmer",
 		"parents": ["Martha", "Michael"],
-		"currentSpouse": 401222887
+		"currentSpouse": 401222887,
+		"descendents": ["Roger Bob", "Andrea Bob"]
 	},
 	{
 		"id": 401222887,
