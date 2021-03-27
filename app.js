@@ -48,6 +48,7 @@ function mainMenu(person, people){
     break;
     case "descendants":
     // TODO: get person's descendants
+    displayDescendants(person);
     break;
     case "restart":
     app(people); // restart
@@ -122,6 +123,12 @@ function displayFamily(person){
   let personFamily = "Parents: " + person.parents + "\n";
   alert(personFamily);
 }
+
+function displayDescendants(person){
+
+  let personDescendants = "Descendants: " + person.descendants + "\n";
+  alert(personDescendants);
+} 
 
 
 

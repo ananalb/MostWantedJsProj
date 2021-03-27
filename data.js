@@ -13,7 +13,7 @@ const data = [
 		"occupation": "programmer",
 		"parents": ["Martha", "Michael"],
 		"currentSpouse": 401222887,
-		"descendents": ["Roger Bob", "Andrea Bob"]
+		"descendants": ["Roger Bob", "Andrea Bob"]
 	},
 	{
 		"id": 401222887,
