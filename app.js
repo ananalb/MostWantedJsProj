@@ -35,7 +35,7 @@ function mainMenu(person, people){
   }
 
 
- let displayOption = prompt("Found " + person.firstName + " " + person.lastName +" . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'");
+ let displayOption = prompt("Found " + person.firstName + " " + person.lastName +" . Do you want to know their 'info', 'family', 'immediate family' or 'descendants'? Type the option you want or 'restart' or 'quit'");
 
   switch(displayOption){
     case "info":
@@ -45,6 +45,9 @@ function mainMenu(person, people){
     case "family":
     // TODO: get person's family
     displayFamily(person);
+    break;
+    case "immediate family":
+    findSpouseById(people);
     break;
     case "descendants":
     // TODO: get person's descendants
@@ -83,7 +86,7 @@ function searchByTraits(people){
   let occupation = promptFor("what is the person's occupation?", chars);
 
   let foundPerson = people.filter(function(person){
-    if(person.eyeColor === eyeColor && person.age == age && person.occupation == occupation && person.gender == gender){
+    if(person.eyeColor === eyeColor && person.age === age && person.occupation === occupation && person.gender === gender){
     return true;
     }
     else{
@@ -128,7 +131,17 @@ function displayDescendants(person){
   let personDescendants = "Descendants: " + person.descendants + "\n";
   alert(personDescendants);
   displayDescendants();
-} 
+}
+
+function findSpouseById(person){
+
+  let personFamily = "Spouse: " + person.currentSpouse + "\n";
+  alert(personFamily);
+}
+
+
+
+
 
 
 
