@@ -78,13 +78,12 @@ function searchByName(people){
 
 function searchByTraits(people){
   let eyeColor = promptFor("What is the person's eye color?", chars);
-  let height = promptFor("what is the person's height?", chars);
   let age = promptFor("what is the person's age?", chars);
-  let weight = promptFor("what is the person's eye weight?", chars);
+  let gender = promptFor("what is the person's gender?", chars);
   let occupation = promptFor("what is the person's occupation?", chars);
 
   let foundPerson = people.filter(function(person){
-    if(person.eyeColor === eyeColor && person.height === height && person.age == age && person.occupation == occupation && person.weight == weight){
+    if(person.eyeColor === eyeColor && person.age == age && person.occupation == occupation && person.gender == gender){
     return true;
     }
     else{
@@ -128,6 +127,7 @@ function displayDescendants(person){
 
   let personDescendants = "Descendants: " + person.descendants + "\n";
   alert(personDescendants);
+  displayDescendants();
 } 
 
 
