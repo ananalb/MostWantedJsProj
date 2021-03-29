@@ -151,8 +151,8 @@ function findSpouseById(person,people){   //family
           return false;
         }
       })
-      let personInfo = "Spouse's first name:" + foundSpouse[0].firstName + "\n";
-      personInfo+= "Spouse's last name: " + foundSpouse[0].lastName + "\n";
+      let personInfo = person.firstName + "'s" + " " + "spouse's first name: " + foundSpouse[0].firstName + "\n";
+      personInfo+= person.firstName + "'s" + " " + "spouse's last name: " + foundSpouse[0].lastName + "\n";
       return alert(personInfo); 
     }    
 }
