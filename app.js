@@ -36,7 +36,7 @@ function mainMenu(person, people){
 
 
  let displayOption = prompt("Found " + person.firstName + " " + person.lastName +" . Do you want to know their 'info', 'family', 'immediate family' or 'descendants'? Type the option you want or 'restart' or 'quit'");
-let search;
+
   switch(displayOption){
     case "info":
     // TODO: get person's info
@@ -47,7 +47,7 @@ let search;
     displayFamily(person);
     break;
     case "immediate family":
-    search = findSpouseById(person);
+    findSpouseById(person,people);
     break;
     case "descendants":
     // TODO: get person's descendants
@@ -130,19 +130,28 @@ function displayDescendants(person){
 
   let personDescendants = "Descendants: " + person.descendants + "\n";
   alert(personDescendants);
-  displayDescendants();
+  displayDescendants(personDescendants);
 }
 
-function findSpouseById(people){
+function findSpouseById(person,people){
 
-    let currentSpouse = people.currentSpouse;  
-    if(person.id === currentSpouse){
-      return currentSpouse.firstName && currentSpouse.lastName;
+    let currentSpouse = person.currentSpouse;  
+    if(!currentSpouse){
+      return alert("No spouse");
+     
     }
     else{
-      return "This person doesn't have a spouse";
-    }   
-  };
+      let foundPerson = people.filter(function(person){
+        if(person.id === currentSpouse){
+          return true;
+        }   
+        else{
+          return false;
+        }
+      })
+      return foundPerson[0]; 
+    }    
+}
 
 
 
