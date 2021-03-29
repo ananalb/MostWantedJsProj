@@ -119,20 +119,24 @@ function displayPerson(person){
 function displayDescendants(person,people){
 
   let personDescendants = person.parents;
-  if(!parents){
+  if(!personDescendants){
     return alert("No parents");
   }
   else{
     let foundDescendants = people.filter(function(person){
-      if(person.id === personDescendants){
+      if(personDescendants.includes(person.id)){
         return true;
       }
       else{
         return false;
       }
     })
+
+    let personInfo = `${person.firstName}'s parent's first name: ${foundDescendants)}`;
+    personInfo+= person.firstName + "'s" + " " + "parent's last name: " + foundDescendants[0].lastName + "\n";
+    return alert(foundDescendants);
+    //return alert(displayDescendants(foundDescendants[0]));
   }
-  displayDescendants(personDescendants);
 }
 
 function findSpouseById(person,people){   //family
