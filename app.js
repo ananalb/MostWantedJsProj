@@ -120,7 +120,7 @@ function displayDescendants(person,people){
 
   let personDescendants = person.parents;
   if(!personDescendants){
-    return alert("No parents");
+    return alert("No parents information available");
   }
   else{
     let foundDescendants = people.filter(function(person){
@@ -128,13 +128,13 @@ function displayDescendants(person,people){
         return true;
       }
       else{
-        return false;
+        return false; 
       }
     })
 
-    let personInfo = `${person.firstName}'s parent's first name: ${foundDescendants)}`;
+    let personInfo = person.firstName + "'s" + " " + "parent's first name: " + foundDescendants[0].firstName + "\n";
     personInfo+= person.firstName + "'s" + " " + "parent's last name: " + foundDescendants[0].lastName + "\n";
-    return alert(foundDescendants);
+    return alert(personInfo);
     //return alert(displayDescendants(foundDescendants[0]));
   }
 }
