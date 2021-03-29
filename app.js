@@ -35,8 +35,7 @@ function mainMenu(person, people){
   }
 
 
- let displayOption = prompt("Found " + person.firstName + " " + person.lastName +" . Do you want to know their 'info', 'family', 'immediate family' or 'descendants'? Type the option you want or 'restart' or 'quit'");
-
+ let displayOption = prompt("Found " + person.firstName + " " + person.lastName +" . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'");
   switch(displayOption){
     case "info":
     // TODO: get person's info
@@ -44,14 +43,11 @@ function mainMenu(person, people){
     break;
     case "family":
     // TODO: get person's family
-    displayFamily(person);
-    break;
-    case "immediate family":
     findSpouseById(person,people);
     break;
     case "descendants":
     // TODO: get person's descendants
-    displayDescendants(person);
+    displayDescendants(person,people);
     break;
     case "restart":
     app(people); // restart
@@ -120,20 +116,26 @@ function displayPerson(person){
   alert(personInfo);
 }
 
-function displayFamily(person){
+function displayDescendants(person,people){
 
-  let personFamily = "Parents: " + person.parents + "\n";
-  alert(personFamily);
-}
-
-function displayDescendants(person){
-
-  let personDescendants = "Descendants: " + person.descendants + "\n";
-  alert(personDescendants);
+  let personDescendants = person.parents;
+  if(!parents){
+    return alert("No parents");
+  }
+  else{
+    let foundDescendants = people.filter(function(person){
+      if(person.id === personDescendants){
+        return true;
+      }
+      else{
+        return false;
+      }
+    })
+  }
   displayDescendants(personDescendants);
 }
 
-function findSpouseById(person,people){
+function findSpouseById(person,people){   //family
 
     let currentSpouse = person.currentSpouse;  
     if(!currentSpouse){
@@ -141,7 +143,7 @@ function findSpouseById(person,people){
      
     }
     else{
-      let foundPerson = people.filter(function(person){
+      let foundSpouse = people.filter(function(person){
         if(person.id === currentSpouse){
           return true;
         }   
@@ -149,12 +151,11 @@ function findSpouseById(person,people){
           return false;
         }
       })
-      return foundPerson[0]; 
+      let personInfo = "Spouse's first name:" + foundSpouse[0].firstName + "\n";
+      personInfo+= "Spouse's last name: " + foundSpouse[0].lastName + "\n";
+      return alert(personInfo); 
     }    
 }
-
-
-
 
 // function that prompts and validates user input
 function promptFor(question, valid){
