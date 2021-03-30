@@ -130,13 +130,13 @@ function displayDescendants(person,people){
         return false; 
       }
     })
-
     let personInfo = person.firstName + "'s" + " " + "Parent's first name: " + foundDescendants[0].firstName + "\n";
     personInfo+= person.firstName + "'s" + " " + "Parent's last name: " + foundDescendants[0].lastName + "\n";
-    // return alert(personInfo);
-    return alert(displayDescendants(personInfo));
-  } 
+    return alert(personInfo);     
+    }  
 }
+//displayDescendants("Billy Bob", people); 
+
 
 
 function findSpouseById(person,people){   //family
